@@ -48,5 +48,24 @@ return [
             "url" => "verktyg",
             "title" => "Verktyg och möjligheter för utveckling.",
         ],
+        [
+            "text" => "IP Validator",
+            "url" => "ipvalidator/default",
+            "submenu" => [
+                "items" => [
+                    [
+                        "text" => "Default",
+                        "url" => "ipvalidator/default",
+                        "title" => "IP Validator",
+                    ],
+                    [
+                        "text" => "REST-API",
+                        "url" => "ipvalidator/api",
+                        "title" => "IP Validator",
+                    ],
+                ],
+            ],
+            "title" => "Validera IP adresser",
+        ],
     ],
 ];

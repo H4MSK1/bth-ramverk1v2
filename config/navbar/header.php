@@ -67,5 +67,24 @@ return [
             ],
             "title" => "Validera IP adresser",
         ],
+        [
+            "text" => "IP Locator",
+            "url" => "iplocator/default",
+            "submenu" => [
+                "items" => [
+                    [
+                        "text" => "Default",
+                        "url" => "iplocator/default",
+                        "title" => "IP Locator",
+                    ],
+                    [
+                        "text" => "REST-API",
+                        "url" => "iplocator/api",
+                        "title" => "IP Locator",
+                    ],
+                ],
+            ],
+            "title" => "Lokalisera IP adresser",
+        ],
     ],
 ];

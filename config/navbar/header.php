@@ -38,16 +38,16 @@ return [
             "url" => "om",
             "title" => "Om denna webbplats.",
         ],
-        [
-            "text" => "Styleväljare",
-            "url" => "style",
-            "title" => "Välj stylesheet.",
-        ],
-        [
-            "text" => "Verktyg",
-            "url" => "verktyg",
-            "title" => "Verktyg och möjligheter för utveckling.",
-        ],
+        //[
+        //    "text" => "Styleväljare",
+        //    "url" => "style",
+        //    "title" => "Välj stylesheet.",
+        //],
+        //[
+        //    "text" => "Verktyg",
+        //    "url" => "verktyg",
+        //    "title" => "Verktyg och möjligheter för utveckling.",
+        //],
         [
             "text" => "IP Validator",
             "url" => "ipvalidator/default",
@@ -85,6 +85,25 @@ return [
                 ],
             ],
             "title" => "Lokalisera IP adresser",
+        ],
+        [
+            "text" => "Weather",
+            "url" => "weather/default",
+            "submenu" => [
+                "items" => [
+                    [
+                        "text" => "Default",
+                        "url" => "weather/default",
+                        "title" => "Weather",
+                    ],
+                    [
+                        "text" => "REST-API",
+                        "url" => "weather/api",
+                        "title" => "Weather",
+                    ],
+                ],
+            ],
+            "title" => "Weather API",
         ],
     ],
 ];

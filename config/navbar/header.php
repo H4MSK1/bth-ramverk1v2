@@ -2,6 +2,15 @@
 /**
  * Supply the basis for the navbar as an array.
  */
+
+$kmomSubMenu = function ($kmom) {
+    return [
+        "text" => ucfirst($kmom),
+        "url" => "redovisning/{$kmom}",
+        "title" => "Redovisning för {$kmom}.",
+    ];
+};
+
 return [
     // Use for styling the menu
     "wrapper" => null,
@@ -20,16 +29,13 @@ return [
             "title" => "Redovisningstexter från kursmomenten.",
             "submenu" => [
                 "items" => [
-                    [
-                        "text" => "Kmom01",
-                        "url" => "redovisning/kmom01",
-                        "title" => "Redovisning för kmom01.",
-                    ],
-                    [
-                        "text" => "Kmom02",
-                        "url" => "redovisning/kmom02",
-                        "title" => "Redovisning för kmom02.",
-                    ],
+                    $kmomSubMenu("kmom01"),
+                    $kmomSubMenu("kmom02"),
+                    $kmomSubMenu("kmom03"),
+                    $kmomSubMenu("kmom04"),
+                    $kmomSubMenu("kmom05"),
+                    $kmomSubMenu("kmom06"),
+                    $kmomSubMenu("kmom10"),
                 ],
             ],
         ],

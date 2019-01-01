@@ -15,7 +15,7 @@ trait WeatherApiTrait
     public function fetchWeather($lat, $lng)
     {
         $service = $this->getServiceByName('darksky');
-        $endpoint = "{$service['endpoint']}{$service['key']}/{$lat},{$lng}?units=si";
+        $endpoint = "{$service['endpoint']}{$service['key']}/{$lat},{$lng}?lang=sv&units=si";
 
         return $this->fetchCurl($endpoint);
     }

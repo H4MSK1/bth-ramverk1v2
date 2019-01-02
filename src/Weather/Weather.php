@@ -2,44 +2,30 @@
 
 namespace H4MSK1\Weather;
 
+use H4MSK1\Curl\Api;
 use H4MSK1\Map\OpenLayers;
-use H4MSK1\IpLocator\IpLocator;
 
 class Weather
 {
-    public function processRequest($request, $curl, $useQueryString = false)
+    public function processRequest($iplocation, $coords, $type, Api $curl)
     {
         $payload = ['weather' => [], 'map' => null];
         $lat = 0;
         $lng = 0;
 
-        if ($useQueryString) {
-            $ip = $request->getGet('ip');
-            $coords = $request->getGet('coords');
-            $type = $request->getGet('type');
-        } else {
-            $ip = $request->getPost('ip');
-            $coords = $request->getPost('coords');
-            $type = $request->getPost('type');
-        }
-
-        if (empty($ip) && empty($coords)) {
+        if (empty($coords) && $iplocation['ip'] === 'Invalid') {
             $payload['error'] = 'Missing input data';
             return $payload;
         }
 
-        if (! empty($ip)) {
-            $iploc = (new IpLocator($ip))->locateIp();
-
-            if (isset($iploc['latitude']) && isset($iploc['longitude'])) {
-                $lat = $iploc['latitude'];
-                $lng = $iploc['longitude'];
+        if (empty($coords)) {
+            if (isset($iplocation['latitude']) && isset($iplocation['longitude'])) {
+                $lat = $iplocation['latitude'];
+                $lng = $iplocation['longitude'];
             } else {
                 $payload['error'] = 'Ip not valid';
             }
-        }
-
-        if (! empty($coords)) {
+        } else {
             if (strpos($coords, ',') !== false) {
                 list($lat, $lng) = explode(',', $coords);
             } else {
@@ -50,11 +36,6 @@ class Weather
         if (! isset($payload['error'])) {
             $payload['weather'] = $curl->getWeatherData($lat, $lng, $type);
             $payload['map'] = (new OpenLayers)->getHtml($lat, $lng);
-        }
-
-        if ($useQueryString) {
-            // remove the map HTML code since we're using the API at this point
-            unset($payload['map']);
         }
 
         return $payload;

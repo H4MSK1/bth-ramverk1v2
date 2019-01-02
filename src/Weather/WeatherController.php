@@ -4,6 +4,7 @@ namespace H4MSK1\Weather;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
+use H4MSK1\IpLocator\IpLocator;
 
 class WeatherController implements ContainerInjectableInterface
 {
@@ -23,7 +24,11 @@ class WeatherController implements ContainerInjectableInterface
     {
         $request = $this->di->get('request');
         $curl = $this->di->get('curl');
-        $result = (new Weather)->processRequest($request, $curl);
+
+        $ip = (new IpLocator($request->getPost('ip')))->locateIp();
+        $type = $request->getPost('type');
+        $coords = $request->getPost('coords');
+        $result = (new Weather)->processRequest($ip, $coords, $type, $curl);
 
         return $this->indexAction($result);
     }

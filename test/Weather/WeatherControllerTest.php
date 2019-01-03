@@ -29,13 +29,15 @@ class WeatherControllerTest extends TestCase
         $this->controller->setDI($this->di);
     }
 
-    public function testIndexAction($result = null)
+    public function testIndexAction()
     {
         $res = $this->controller->indexAction();
         $this->assertInstanceOf('\Anax\Response\Response', $res);
+    }
 
-        $body = $res->getBody();
-        $exp = '| ramverk1</title>';
-        $this->assertContains($exp, $body);
+    public function testIndexActionPost()
+    {
+        $res = $this->controller->indexActionPost();
+        $this->assertInstanceOf('\Anax\Response\Response', $res);
     }
 }

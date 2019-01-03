@@ -28,7 +28,7 @@ trait WeatherApiTrait
         $curlHandlers = [];
         $curlCollection = curl_multi_init();
 
-        for($i = $pastDays; $i > 0; $i--) {
+        for ($i = $pastDays; $i > 0; $i--) {
             $days[$i] = strtotime("-$i days");
         }
 

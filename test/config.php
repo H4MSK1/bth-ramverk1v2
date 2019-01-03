@@ -20,13 +20,6 @@ require ANAX_INSTALL_PATH . "/vendor/autoload.php";
 
 
 /**
- * Use $di as global identifier (used in views by viewhelpers).
- */
-$di = null;
-
-
-
-/**
  * Include others.
  */
 foreach (glob(__DIR__ . "/Mock/*.php") as $file) {

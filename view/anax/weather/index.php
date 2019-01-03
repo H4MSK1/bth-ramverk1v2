@@ -43,7 +43,6 @@ $userIp = ($ipAddr === '::1' ? '8.8.8.8' : $ipAddr);
 </form>
 
 <?php if (isset($result) && count($result) > 0) : ?>
-
     <?php if (isset($result['error'])) : ?>
         <h2 style="color:red">Error: <?= $result['error'] ?></h2>
     <?php endif; ?>

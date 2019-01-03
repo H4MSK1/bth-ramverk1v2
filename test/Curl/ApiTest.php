@@ -15,9 +15,11 @@ class ApiTest extends TestCase
 
     public function testGetServiceByName()
     {
-        $api = new Api();
+        $endpoints = ['darksky' => ['endpoint' => 'darksky.net']];
+        $api = new Api($endpoints);
         $this->assertInstanceOf('\H4MSK1\Curl\Api', $api);
 
         $this->assertFalse($api->getServiceByName('i.dont.exist'));
+        $this->assertEquals('darksky.net', $api->getServiceByName('darksky')['endpoint']);
     }
 }

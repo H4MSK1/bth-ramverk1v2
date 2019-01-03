@@ -27,16 +27,17 @@ class WeatherApiControllerTest extends TestCase
         // Setup the controller
         $this->controller = new WeatherApiController();
         $this->controller->setDI($this->di);
-
     }
 
     public function testIndexAction()
     {
         $res = $this->controller->indexAction();
         $this->assertInstanceOf('\Anax\Response\Response', $res);
+    }
 
-        $body = $res->getBody();
-        $exp = '| ramverk1</title>';
-        $this->assertContains($exp, $body);
+    public function testForecastAction()
+    {
+        $res = $this->controller->forecastAction();
+        $this->assertInternalType('array', $res);
     }
 }

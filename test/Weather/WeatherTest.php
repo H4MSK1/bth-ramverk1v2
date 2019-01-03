@@ -17,7 +17,5 @@ class WeatherTest extends TestCase
     {
         $weather = new Weather();
         $this->assertInstanceOf('\H4MSK1\Weather\Weather', $weather);
-
-        $this->assertNull(null);
     }
 }

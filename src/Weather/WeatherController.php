@@ -25,10 +25,10 @@ class WeatherController implements ContainerInjectableInterface
         $request = $this->di->get('request');
         $curl = $this->di->get('curl');
 
-        $ip = (new IpLocator($request->getPost('ip')))->locateIp();
+        $ipAddr = (new IpLocator($request->getPost('ip')))->locateIp();
         $type = $request->getPost('type');
         $coords = $request->getPost('coords');
-        $result = (new Weather)->processRequest($ip, $coords, $type, $curl);
+        $result = (new Weather)->processRequest($ipAddr, $coords, $type, $curl);
 
         return $this->indexAction($result);
     }
